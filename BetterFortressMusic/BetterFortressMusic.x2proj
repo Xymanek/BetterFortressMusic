@@ -7,6 +7,7 @@
     <SteamPublishID>0</SteamPublishID>
     <AssemblyName>BetterFortressMusic</AssemblyName>
     <RootNamespace>BetterFortressMusic</RootNamespace>
+    <ProjectGuid>{A87AFF91-DE37-46DE-AEAD-B8E9BF7C8F87}</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Config\" />
