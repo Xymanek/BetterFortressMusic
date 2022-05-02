@@ -23,20 +23,15 @@ static function CHEventListenerTemplate CreateListeners ()
 static protected function EventListenerReturn PostAliensSpawned (Object EventData, Object EventSource, XComGameState GameState, Name Event, Object CallbackData)
 {
 	local XComTacticalMissionManager MissionManager;
-	local XComGameState_Cheats CheatState;
+	local XComGameStateHistory History;
 
 	MissionManager = `TACTICALMISSIONMGR;
+	History = `XCOMHISTORY;
 
-	if (MissionManager.ActiveMission.sType == "GP_FortressLeadup")
-	{
-		CheatState = class'XComGameState_Cheats'.static.GetCheatsObject();
-		CheatState.TacticalMusicSetOverride = 'LostTowerA';
-	}
-	else if (MissionManager.ActiveMission.sType == "GP_FortressShowdown")
-	{
-		CheatState = class'XComGameState_Cheats'.static.GetCheatsObject();
-		CheatState.TacticalMusicSetOverride = 'LostTower_BossFight';
-	}
+	class'X2DownloadableContentInfo_BetterFortressMusic'.static.SetMusicOverrideForMission(
+		History.GetStartState(),
+		MissionManager.ActiveMission.sType
+	);
 
 	return ELR_NoInterrupt;
 }
