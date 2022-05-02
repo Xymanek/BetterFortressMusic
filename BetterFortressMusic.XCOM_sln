@@ -7,9 +7,12 @@ Project("{5DAE07AF-E217-45C1-8DE7-FF99D6011E8A}") = "BetterFortressMusic", "Bett
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|XCOM 2 = Debug|XCOM 2
 		Default|XCOM 2 = Default|XCOM 2
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A87AFF91-DE37-46DE-AEAD-B8E9BF7C8F87}.Debug|XCOM 2.ActiveCfg = Debug|XCOM 2
+		{A87AFF91-DE37-46DE-AEAD-B8E9BF7C8F87}.Debug|XCOM 2.Build.0 = Debug|XCOM 2
 		{A87AFF91-DE37-46DE-AEAD-B8E9BF7C8F87}.Default|XCOM 2.ActiveCfg = Default|XCOM 2
 		{A87AFF91-DE37-46DE-AEAD-B8E9BF7C8F87}.Default|XCOM 2.Build.0 = Default|XCOM 2
 	EndGlobalSection

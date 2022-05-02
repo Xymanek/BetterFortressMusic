@@ -15,7 +15,36 @@ var config array<EBFMMissionMusicSetOverride> MusicOverrides;
 /// </summary>
 static event OnLoadedSavedGame ()
 {
-	// TODO
+	local XComGameState_BattleData BattleData;
+	local XComGameStateHistory History;
+	local XComGameState NewGameState;
+
+	History = `XCOMHISTORY;
+	BattleData = XComGameState_BattleData(History.GetSingleGameStateObjectForClass(class'XComGameState_BattleData'));
+	
+	// Do nothing if we are loading a strategy save
+	if (!IsBattleActive(BattleData)) return;
+
+	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("BFM: OnLoadedSavedGame");
+	SetMusicOverrideForMission(NewGameState, BattleData.MapData.ActiveMission.sType);
+
+	if (NewGameState.GetNumGameStateObjects() > 0)
+	{
+		History.AddGameStateToHistory(NewGameState);
+	}
+	else
+	{
+		History.CleanupPendingGameState(NewGameState);
+	}
+}
+
+static private function bool IsBattleActive (XComGameState_BattleData BattleData)
+{
+	if (BattleData == none) return false;
+	if (BattleData.bRemoved) return false;
+	if (!BattleData.bInPlay) return false;
+
+	return true;
 }
 
 static function SetMusicOverrideForMission (XComGameState NewGameState, string MissionType)
